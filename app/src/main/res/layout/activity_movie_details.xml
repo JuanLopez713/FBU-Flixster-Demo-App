@@ -2,23 +2,25 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rlView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/m_green"
-    tools:context="com.example.flixster.adapters.MovieDetailsActivity">
+    tools:context="com.example.flixster.activities.MovieDetailsActivity">
 
     <ImageView
         android:id="@+id/ivBackdrop"
         android:layout_width="match_parent"
         android:layout_height="250dp"
+        android:layout_marginTop="-25dp"
         tools:srcCompat="@tools:sample/avatars" />
+
 
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/ivBackdrop"
-        android:layout_centerVertical="true"
+        android:layout_below="@+id/ivBackdrop"
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="15dp"
@@ -34,7 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvTitle"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="4dp"
         android:layout_marginEnd="15dp"
         android:layout_toEndOf="@+id/ivPosterDetail"
         android:text="TextView"
@@ -64,7 +66,8 @@
         android:layout_below="@+id/ivBackdrop"
         android:layout_alignParentStart="true"
         android:layout_marginStart="0dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="-50dp"
         tools:srcCompat="@tools:sample/avatars" />
+
 
 </RelativeLayout>

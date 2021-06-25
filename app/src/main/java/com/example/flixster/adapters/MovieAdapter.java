@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,10 +15,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.flixster.R;
+import com.example.flixster.activities.MovieDetailsActivity;
 import com.example.flixster.models.Movie;
 
 import org.parceler.Parcels;
-import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -40,7 +39,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        Log.d("MovieAdapter", "onCreateViewHolder");
+        //Log.d("MovieAdapter", "onCreateViewHolder");
         View movieView = LayoutInflater.from(context).inflate(R.layout.item_movie, parent, false);
         return new ViewHolder(movieView);
     }
@@ -49,7 +48,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         //Get the movie at the passed in position
-        Log.d("MovieAdapter", "onBindViewHolder" + position);
+       // Log.d("MovieAdapter", "onBindViewHolder" + position);
         Movie movie = movies.get(position);
         //Bind the movie data into the ViewHolder
         holder.bind(movie);
@@ -104,7 +103,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
 //
             String imageURL;
 
-            //if phone is in landscape
+           // if phone is in landscape
             if (context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
                 imageURL = movie.getBackdropPath();
             } else {
@@ -114,7 +113,13 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
             //else imageURL = poster image
             int radius = 30;
             int margin = 5;
-            Glide.with(context).load(imageURL).fitCenter().transform(new RoundedCornersTransformation(radius, margin)).into(ivPoster);
+
+            Glide.with(context)
+                    .load(imageURL)
+                    .circleCrop().placeholder(R.drawable.flicks_movie_placeholder)
+
+                    .transform(new RoundedCornersTransformation(radius, margin))
+                    .into(ivPoster);
             ivPoster.setMaxHeight(20);
         }
 
